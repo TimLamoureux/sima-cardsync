@@ -1,11 +1,32 @@
 {
+  "name": "pass-db-sync",
+  "version": "0.1.0",
+  "main": "pass_helper.js",
+  "bin": {
+    "pass-helper": "pass_helper.js"
+  },
   "dependencies": {
-    "async": "^2.6.1",
+    "better-sqlite3": "^4.0.2",
     "commander": "^2.19.0",
     "config": "^2.0.1",
+    "find": "^0.2.9",
+    "global": "^4.3.2",
     "googleapis": "^34.0.0",
     "jimp": "^0.5.4",
-    "readline": "^1.3.0",
-    "sqlite3": "^4.0.2"
+    "readline": "^1.3.0"
+  },
+  "scripts": {
+    "pack": "pkg --out-path './build/' --debug package.json > ./build/build.log"
+  },
+  "pkg": {
+    "targets": [
+      "latest-win-x86",
+      "latest-linux-x86"
+    ]
+  },
+  "author": "Thimothé Lamoureux",
+  "license": {
+    "type": "MIT",
+    "url": "https://www.opensource.org/licenses/mit-license.ph"
   }
 }

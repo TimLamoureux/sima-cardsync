@@ -1,7 +1,8 @@
 const fs = require('fs');
-const async = require('async');
 const readline = require('readline');
 const {google} = require('googleapis');
+
+const Pass_Holder = require('./pass_holder');
 
 const config = require('config');
 
@@ -133,22 +134,12 @@ function passholdersFromSheet() {
                     // Only return what comes below the header row
                     if (idx <= config.get('masterlist.header_row') - 1) return acc;
 
-                    let passholder = {};
 
                     // Removing 1 because row index starts at 1 in Google Sheets interface
                     let rowTitles = rows[config.get('masterlist.header_row') - 1];
 
-                    // Copy all passholder data into object
-                    rowTitles.map((rowTitle, i) => {
-                        /**switch (rowTitle) {
-                            case 'picked_up':
-                            case 'printed_pass':
-                                if ()
-                        }*/
-                        passholder[rowTitle] = row[i];
-                    })
-
-                    acc[passholder['id']] = passholder;
+                    let ph = new Pass_Holder(null, row, rowTitles);
+                    acc[ph.masterlist_id] = ph;
 
                     return acc;
                 }, passholders);

@@ -69,6 +69,12 @@ fabric.properties
 # .nfs files are created when an open file is removed but is still being accessed
 .nfs*
 
+*token*.json
 /node_modules/
 /config/local.json
 /photos_2017/
+/build/*
+/bin/*
+/yarn-error.log
+/yarn.lock
+*.sqlite
